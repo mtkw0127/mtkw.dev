@@ -13,12 +13,11 @@ export default function PostCard({ post }: Props) {
     : "";
 
   return (
-    <article className="group border border-[var(--border)] bg-[var(--surface)] rounded-lg p-5 hover:border-[var(--accent)] transition-colors duration-200">
-      <Link href={`/blog/${post.slug}`}>
-        <h2 className="text-base font-semibold text-[var(--text)] group-hover:text-[var(--accent)] transition-colors leading-snug">
-          {post.title}
-        </h2>
-      </Link>
+    <article className="group relative border border-[var(--border)] bg-[var(--surface)] rounded-lg p-5 hover:border-[var(--accent)] transition-colors duration-200">
+      <Link href={`/blog/${post.slug}`} className="absolute inset-0 rounded-lg" aria-label={post.title} />
+      <h2 className="text-base font-semibold text-[var(--text)] group-hover:text-[var(--accent)] transition-colors leading-snug">
+        {post.title}
+      </h2>
       {formattedDate && (
         <time
           dateTime={post.date}
@@ -33,7 +32,7 @@ export default function PostCard({ post }: Props) {
         </p>
       )}
       {post.tags.length > 0 && (
-        <div className="mt-3 flex flex-wrap gap-1.5">
+        <div className="relative mt-3 flex flex-wrap gap-1.5">
           {post.tags.map((tag) => (
             <TagBadge key={tag} tag={tag} />
           ))}
