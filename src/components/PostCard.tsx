@@ -9,31 +9,31 @@ interface Props {
 
 export default function PostCard({ post }: Props) {
   const formattedDate = post.date
-    ? format(new Date(post.date), "MMMM d, yyyy")
+    ? format(new Date(post.date), "yyyy-MM-dd")
     : "";
 
   return (
-    <article className="border border-gray-200 dark:border-gray-800 rounded-lg p-5 hover:shadow-md transition-shadow">
-      <Link href={`/blog/${post.slug}`} className="group">
-        <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+    <article className="group border border-[var(--border)] bg-[var(--surface)] rounded-lg p-5 hover:border-[var(--accent)] transition-colors duration-200">
+      <Link href={`/blog/${post.slug}`}>
+        <h2 className="text-base font-semibold text-[var(--text)] group-hover:text-[var(--accent)] transition-colors leading-snug">
           {post.title}
         </h2>
       </Link>
       {formattedDate && (
         <time
           dateTime={post.date}
-          className="mt-1 block text-sm text-gray-500 dark:text-gray-400"
+          className="mt-1.5 block text-xs font-mono text-[var(--muted)]"
         >
           {formattedDate}
         </time>
       )}
       {post.description && (
-        <p className="mt-2 text-gray-600 dark:text-gray-300 text-sm leading-relaxed line-clamp-3">
+        <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed line-clamp-2">
           {post.description}
         </p>
       )}
       {post.tags.length > 0 && (
-        <div className="mt-3 flex flex-wrap gap-2">
+        <div className="mt-3 flex flex-wrap gap-1.5">
           {post.tags.map((tag) => (
             <TagBadge key={tag} tag={tag} />
           ))}

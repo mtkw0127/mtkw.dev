@@ -5,24 +5,58 @@
 @variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg:      #ffffff;
+  --surface: #f4f4f5;
+  --border:  #e4e4e7;
+  --text:    #18181b;
+  --muted:   #71717a;
+  --accent:  #7c3aed;
+  --accent-muted: #ede9fe;
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --bg:      #0c0c0c;
+  --surface: #111111;
+  --border:  #1f1f1f;
+  --text:    #e4e4e7;
+  --muted:   #52525b;
+  --accent:  #a78bfa;
+  --accent-muted: #1e1b2e;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-bg:      var(--bg);
+  --color-surface: var(--surface);
+  --color-border:  var(--border);
+  --color-text:    var(--text);
+  --color-muted:   var(--muted);
+  --color-accent:  var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Prose customization for article pages */
+.prose {
+  --tw-prose-body:        var(--text);
+  --tw-prose-headings:    var(--text);
+  --tw-prose-lead:        var(--muted);
+  --tw-prose-links:       var(--accent);
+  --tw-prose-bold:        var(--text);
+  --tw-prose-counters:    var(--muted);
+  --tw-prose-bullets:     var(--muted);
+  --tw-prose-hr:          var(--border);
+  --tw-prose-quotes:      var(--text);
+  --tw-prose-quote-borders: var(--accent);
+  --tw-prose-captions:    var(--muted);
+  --tw-prose-code:        var(--accent);
+  --tw-prose-pre-code:    #e4e4e7;
+  --tw-prose-pre-bg:      #111111;
+  --tw-prose-th-borders:  var(--border);
+  --tw-prose-td-borders:  var(--border);
 }

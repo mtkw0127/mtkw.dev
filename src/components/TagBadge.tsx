@@ -8,9 +8,9 @@ export default function TagBadge({ tag }: Props) {
   return (
     <Link
       href={`/tags/${encodeURIComponent(tag)}`}
-      className="inline-block rounded-full bg-gray-100 px-3 py-0.5 text-xs font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 transition-colors"
+      className="inline-block rounded px-2 py-0.5 text-xs font-mono font-medium bg-[var(--accent-muted)] text-[var(--accent)] hover:opacity-80 transition-opacity"
     >
-      {tag}
+      #{tag}
     </Link>
   );
 }

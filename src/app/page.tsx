@@ -6,8 +6,8 @@ export default function Home() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">
-        記事一覧
+      <h1 className="text-sm font-mono text-[var(--muted)] mb-5 tracking-widest uppercase">
+        Posts
       </h1>
       <PostList posts={posts} />
     </div>

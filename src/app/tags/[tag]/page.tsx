@@ -31,11 +31,9 @@ export default async function TagPage({ params }: Props) {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">
-        #{decoded}
-        <span className="ml-2 text-base font-normal text-gray-500 dark:text-gray-400">
-          ({posts.length}件)
-        </span>
+      <h1 className="text-sm font-mono text-[var(--muted)] mb-5 tracking-widest uppercase flex items-center gap-2">
+        <span className="text-[var(--accent)]">#{decoded}</span>
+        <span>({posts.length})</span>
       </h1>
       <PostList posts={posts} />
     </div>

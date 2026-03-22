@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { format } from "date-fns";
 import { getPostBySlug, getPostSlugs } from "@/lib/posts";
-import { SITE_CONFIG } from "@/lib/config";
 import TagBadge from "@/components/TagBadge";
 
 type Props = {
@@ -42,25 +41,25 @@ export default async function BlogPost({ params }: Props) {
 
   const post = await getPostBySlug(slug);
   const formattedDate = post.date
-    ? format(new Date(post.date), "MMMM d, yyyy")
+    ? format(new Date(post.date), "yyyy-MM-dd")
     : "";
 
   return (
     <article>
-      <header className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
+      <header className="mb-10 pb-8 border-b border-[var(--border)]">
+        <h1 className="text-2xl font-bold text-[var(--text)] leading-snug">
           {post.title}
         </h1>
         {formattedDate && (
           <time
             dateTime={post.date}
-            className="mt-2 block text-sm text-gray-500 dark:text-gray-400"
+            className="mt-2 block text-xs font-mono text-[var(--muted)]"
           >
             {formattedDate}
           </time>
         )}
         {post.tags.length > 0 && (
-          <div className="mt-3 flex flex-wrap gap-2">
+          <div className="mt-3 flex flex-wrap gap-1.5">
             {post.tags.map((tag) => (
               <TagBadge key={tag} tag={tag} />
             ))}
@@ -75,5 +74,4 @@ export default async function BlogPost({ params }: Props) {
   );
 }
 
-// Disable dynamic rendering — all pages are static
 export const dynamic = "error";
